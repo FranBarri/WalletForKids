@@ -2,13 +2,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import './NavBar.css'
 import { Link } from 'react-router-dom';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import logo from '../../images/Logo.png';
-import { logoutProcess } from '../Auth/ApiCall';
-import { AuthContext } from '../Auth/AuthAction';
-export const Navbar = () => {
-  const {dispatch}=useContext(AuthContext)
+
+export const NavbarP = () => {
   const [nav, setNav] = useState(false);
   const [theme, setTheme] = useState(null);
   const handleNav = () => {
@@ -42,8 +40,8 @@ export const Navbar = () => {
       </h1>
       <img src={logo} alt='logo' className='md:hidden w-22 h-12 pr-4' />
 <div className='hidden max-w-[50%] xl:flex justify-content: space-evenly ;' style={{gap:'5px'}}>
-<Link to='/'><button
-    className='p-4 cursor-pointer dark:fill-white text-[#03001C] font-semibold dark:text-white hover:text-[#eeae0d]bg-[#FF6961] hover:text-gray-700 dark:fill-white dark:hover:fill-gray-400 transition-all duration-75'
+  <button
+    className='p-4 cursor-pointer dark:fill-white text-white font-semibold dark:text-white hover:text-gray-700 dark:hover:fill-gray-400 transition-all duration-75'
     style={{
       whiteSpace: 'nowrap',
       borderRadius: '10%',
@@ -56,11 +54,10 @@ export const Navbar = () => {
     }}  
     
   >
-   Inicio
-    </button></Link>
-    <Link to='/wallet'>
+    <Link to='/'>Inicio</Link>
+    </button>
   <button
-    className='p-4 cursor-pointer dark:fill-white text-[#03001C] font-semibold dark:text-white hover:text-[#eeae0d]bg-[#FF6961] hover:text-gray-700 dark:fill-white dark:hover:fill-gray-400 transition-all duration-75'
+    className='p-4 cursor-pointer dark:fill-white text-white font-semibold dark:text-white hover:text-gray-700 dark:hover:fill-gray-400 transition-all duration-75'
     style={{
       whiteSpace: 'nowrap',
       borderRadius: '10%',
@@ -71,10 +68,10 @@ export const Navbar = () => {
       textOverflow: 'ellipsis'
     }}
   >
-Lo que tengo
-    </button></Link>
-    <Link to='/transactions'><button
-    className='p-4 cursor-pointer dark:fill-white text-[#03001C] font-semibold dark:text-white hover:text-[#eeae0d]bg-[#FF6961] hover:text-gray-700 dark:fill-white dark:hover:fill-gray-400 transition-all duration-75'
+    <Link to='/wallet'>SubWallet</Link>
+    </button>
+  <button
+    className='p-4 cursor-pointer dark:fill-white text-white font-semibold dark:text-white hover:text-gray-700 dark:hover:fill-gray-400 transition-all duration-75'
     style={{
       whiteSpace: 'nowrap',
       borderRadius: '10%',
@@ -85,10 +82,10 @@ Lo que tengo
         textOverflow: 'ellipsis'
       }}
       >
-      Historial
-      </button></Link>
-      <Link to='/profile'> <button
-      className='p-4 cursor-pointer font-semibold hover:text-[#eeae0d]bg-[#FF6961] dark:fill-white dark:hover:fill-gray-400 transition-all duration-75'
+      <Link to='/transactions'>Gastos</Link>
+      </button>
+    <button
+      className='p-4 cursor-pointer dark:fill-white text-white font-semibold dark:text-white hover:text-gray-700 dark:hover:fill-gray-400 transition-all duration-75'
       style={{
       whiteSpace: 'nowrap',
       borderRadius: '10%',
@@ -99,23 +96,21 @@ Lo que tengo
         textOverflow: 'ellipsis'
       }}
     >
-Yo 
-    </button></Link>
-    <button type='submit'
-    onSubmit={logoutProcess}
-    className='p-4 cursor-pointer dark:fill-white text-[#03001C] font-semibold dark:text-white hover:text-[#eeae0d]bg-[#FF6961] hover:text-gray-700 dark:fill-white dark:hover:fill-gray-400 transition-all duration-75'
+    <Link to='/profile'>Perfil</Link>
+    </button>
+    <button
+    className='p-4 cursor-pointer dark:fill-white text-white font-semibold dark:text-white hover:text-gray-700 dark:hover:fill-gray-400 transition-all duration-75'
     style={{
       whiteSpace: 'nowrap',
       borderRadius: '10%',
-      color: '#FF6961',
-      border: 'solid 1.3px #FF6961',
+      color: 'black',
       width: '80px',
       gap:'5px',
       marginLeft:'10px',
       overflow: 'clip',
-
       textOverflow: 'ellipsis'
-     }} >Salir</button>
+    }}
+    >Salir</button>
 
 </div>
 
@@ -153,20 +148,19 @@ Yo
       </li>
       <li className='NavBarLinks pb-4 text-2xl font-semibold'>
         <Link to='/wallet' onClick={handleNav}>
-          Lo que tengo
+          SubWallet
         </Link>
       </li>
       <li className='NavBarLinks pb-4 text-2xl font-semibold'>
         <Link to='/transactions' onClick={handleNav}>
-          Historial
+          Gastos
         </Link>
       </li>
       <li className='NavBarLinks pb-4 text-2xl font-semibold'>
         <Link to='/profile' onClick={handleNav}>
-          Yo
+          Perfil
         </Link>
       </li>
-      
     </ul>
   </div>
 </div>

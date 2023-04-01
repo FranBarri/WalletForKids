@@ -1,8 +1,21 @@
-import React, { useState } from 'react';
-import Account from '../../images/img.png';
+import React, { useContext, useState } from 'react';
 import dino from '../../images/dino.png';
+import { Link, Navigate, redirect, useNavigate } from 'react-router-dom';
+import { loginProcess } from './ApiCall';
+import { AuthContext } from './AuthAction';
+
 export const Login = () => {
   const [password, setPassword] = useState('');
+  const [dispatched, setDispatched] = useState(false);
+  const [username, setUsername] = useState('');
+  const [sessionMessage, setSessionMessage] = useState('')
+  const [sessionStatus, setSessionStatus] = useState('')
+  const {dispatch}=useContext(AuthContext)
+  const {user,error}=useContext(AuthContext)
+  const navigate=useNavigate()
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
@@ -10,7 +23,23 @@ export const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // handle form submission
+      loginProcess({username,password},dispatch)
+      .then((response) => {
+        setDispatched(true)
+        setTimeout(() => {
+          setDispatched(false)
+        }, (2000));
+        user?setTimeout(() => {
+          navigate('/')
+
+        }, 400):<></>
+      })
+    
+
+       .catch((error) => {
+          console.error('Error:', error);
+      
+        })
   };
 
   return (
@@ -33,7 +62,9 @@ export const Login = () => {
               id="username"
               type="text"
               placeholder="Usuario"
-              required
+              required="true"
+              onChange={handleUsernameChange}
+              value={username}
             />
           </div>
           <div className="mb-4">
@@ -56,16 +87,28 @@ export const Login = () => {
           </div>
           <div className="flex items-center justify-between">
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-blue-500 hover:bg-[#8DBF81] hover:text-white hover:font-weight:600  text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
+              onSubmit={handleSubmit}
             >
               Ingresar
             </button>
+            <button
+              className="bg-blue-500 hover:bg-[#c084fc] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="submit"
+            >
+              Soy Adulto
+            </button>
           </div>
+          {
+            user?<p className="text-green-500 text-xs italic">Bienvenido! {user.username}.</p>:<></>
+          }
+          {!user && dispatched && <p className="text-red-500 text-xs italic">{error}</p>}
         </form>
-        <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+        
+        <Link to='/register' className="inline-block margin-bottom:30px  align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" >
           ¿No tienes una cuenta? Regístrate.
-        </a>
+        </Link>
       </div>
     </div>
   );
