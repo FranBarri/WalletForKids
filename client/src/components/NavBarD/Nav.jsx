@@ -99,24 +99,20 @@ export const NavbarD = () => {
     } md:hidden fixed w-screen h-screen top-0 left-0 bg-white dark:bg-[#2A2B2A] bg-opacity-100`}
   >
     <ul className='text-center pt-24 dark:bg-[#2A2B2A] dark:text-white '>
-      <li className='NavBarLinks pb-4 text-2xl font-semibold '>
-        <Link to='/'  onClick={handleNav}>
+    
+      <li className='NavBarLinks pb-4 text-2xl font-semibold'>
+        <Link to='/wallet' onClick={handleNav}>
           Inicio
         </Link>
       </li>
       <li className='NavBarLinks pb-4 text-2xl font-semibold'>
-        <Link to='/wallet' onClick={handleNav}>
-          SubWallet
-        </Link>
-      </li>
-      <li className='NavBarLinks pb-4 text-2xl font-semibold'>
         <Link to='/transactions' onClick={handleNav}>
-          Gastos
+          Ingresar
         </Link>
       </li>
       <li className='NavBarLinks pb-4 text-2xl font-semibold'>
-        <Link to='/profile' onClick={handleNav}>
-          Perfil
+        <Link to='/register' onClick={handleNav}>
+          Registrarme
         </Link>
       </li>
     </ul>
