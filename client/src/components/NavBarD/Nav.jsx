@@ -106,7 +106,7 @@ export const NavbarD = () => {
         </Link>
       </li>
       <li className='NavBarLinks pb-4 text-2xl font-semibold'>
-        <Link to='/transactions' onClick={handleNav}>
+        <Link to='/login' onClick={handleNav}>
           Ingresar
         </Link>
       </li>
