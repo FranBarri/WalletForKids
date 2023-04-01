@@ -38,7 +38,7 @@ export const NavbarD = () => {
       <h1 className='hidden  sm:flex hover:text-#CB7EAD bg-[#CB7EAD] cursor-pointer font-mono w-full font-extrabold text-transparent text-3xl bg-clip-text bg-gradient-to-r from-purple-400 to-blue-600'>
        <Link to={'/home'}> Wall-et</Link>
       </h1>
-      <img src={logo} alt='logo' className='md:hidden w-22 h-12 pr-4' />
+      <Link to={'/home'}>   <img src={logo} alt='logo' className='md:hidden w-22 h-12 pr-4' /></Link>
 <div className='hidden max-w-[50%] xl:flex justify-content: space-evenly ;' style={{gap:'5px'}}>
 <Link to='/login'> <button
     className='p-4 cursor-pointer dark:fill-white text-white font-semibold dark:text-white hover:text-gray-700 dark:hover:fill-gray-400 transition-all duration-75'
