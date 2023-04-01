@@ -93,12 +93,12 @@ export const Login = () => {
             >
               Ingresar
             </button>
-            <button
+            <Link to={'parent-register'}><button
               className="bg-blue-500 hover:bg-[#c084fc] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
             >
               Soy Adulto
-            </button>
+            </button></Link>
           </div>
           {
             user?<p className="text-green-500 text-xs italic">Bienvenido! {user.username}.</p>:<></>
