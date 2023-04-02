@@ -1,18 +1,19 @@
 import React, { useContext, useState } from 'react';
-import egg from '../../images/dinoEgg.png';
+import egg from '../../images/big_dino.png';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { registerProcess } from './ApiCall';
+
+import { parentalRegisterProcess, registerProcess } from './ApiCall';
 import { AuthContext } from './AuthAction';
 
-export const Register=()=> {
+export const ParentalRegister=()=> {
   const {user,dispatch,error}=useContext(AuthContext)
   const {registrated_user}=useContext(AuthContext)
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
-  const [verificationCode, setVerificationCode] = useState('');
   const [birthdate, setBirthDate] = useState('');
+  const [id_type, setIdType] = useState('');
+  const [id_number, setIdNumber] = useState('');
   const [responseMessage, setResponseMessage]=useState('')
   const [response, setResponse]=useState('')
   const {navigate}=useNavigate()
@@ -21,6 +22,13 @@ export const Register=()=> {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
+  const handleIdTypeChange = (event) => {
+    setIdType(event.target.value);
+  };
+  const handleIdNumberChange = (event) => {
+    setIdNumber(event.target.value);
+  };
+  
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
   };
@@ -31,18 +39,16 @@ export const Register=()=> {
     setBirthDate(event.target.value);
   };
 
-  const handleVerificationCodeChange = (event) => {
-    setVerificationCode(event.target.value);
-  };
- 
+
+  
   const handleSubmit = (event) => {
     event.preventDefault();
-    registerProcess({username,password,email,birthdate,verificationCode:verificationCode},dispatch)
+    parentalRegisterProcess({username,password,email,birthdate,id_number,id_type},dispatch)
 
  if( registrated_user){
 
    setTimeout(() => {
-     navigate('/login/niñxs')
+     navigate('/login/adultxs')
     }, 1200)
   } 
    
@@ -51,10 +57,9 @@ export const Register=()=> {
 }
 
   return (
-    
-    <div className='container mx-auto '>
-      <div className="px- flex h-full">
-        <div className="mx-auto text-center py-6 " >
+    <div className='container mx-auto'>
+      <div className="px- flex">
+        <div className="mx-auto text-center py-6">
           <div className="rounded-full bg-slate-200 w-32 h-32">
             <img src={egg} className="mx-auto items-center pt-10" alt="account" />
           </div>
@@ -121,32 +126,58 @@ export const Register=()=> {
               placeholder="MM/DD/YYYY"
               required
             />
-          </div>
-          <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2 ">codigo de verificación</label>
-            <input  maxLength={'4'} value={verificationCode}  onChange={handleVerificationCodeChange} className=" shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline 2px black "title='Ingresa el codigo enviado a tu adulto responsable!'  id="code" type="phone" placeholder="codigo" required />
-          </div>
+            <div className="mb-4">
+  <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="identificationType">
+    Tipo de identificación
+  </label>
+  <select
+    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+    id="identificationType"
+    required='true'
+  >
+    <option value={id_type} onChange={handleIdTypeChange} disabled selected>
+      Seleccione un tipo de identificación
+    </option>
+    <option value="DNI">DNI</option>
+    <option value="CI">CI</option>
+    <option value="passport">Pasaporte</option>
+  </select>
+</div>
 
-          <div className="flex items-center justify-between">
+<div className="mb-4">
+  <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="identificationNumber">
+    Número de identificación
+  </label>
+  <input onChange={handleIdNumberChange} value={id_number}
+    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+    id="identificationNumber"
+    type="text"
+    placeholder="Número de identificación"
+    required='true'
+  />
+</div>
+          </div>
+      
+          <div className="flex items-center ">
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className=" w-35 h-14 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
               onSubmit={()=>handleSubmit}
             >
               Registrarse
 
             </button>
-            <Link to='/register/adultxs'> 
-  <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+             <button
+              className="w-35 h-14 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               >
-              Registro Adulto
-            </button>
+               <Link to='/register/niñxs'> 
+              Tengo menos de 18 años
             </Link>
+            </button>
           </div>
           {registrated_user? <p className='text-green'>Usuario registrado! {registrated_user}</p>:<p></p>}
         </form>
-        <Link to={'/login/niñxs'}> <p className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+        <Link to={'/login/adultxs'} > <p className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
         Ya hiciste esto? Hace click acá. </p></Link>
 </div>
 </div>

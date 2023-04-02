@@ -1,12 +1,13 @@
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import './NavBar.css'
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import logo from '../../images/Logo.png';
-
-export const NavbarD = () => {
+import { logoutProcess } from '../Auth/ApiCall';
+import { AuthContext } from '../Auth/AuthAction';
+export const SessionNavbarKids = () => {
+  const {dispatch}=useContext(AuthContext)
   const [nav, setNav] = useState(false);
   const [theme, setTheme] = useState(null);
   const handleNav = () => {
@@ -36,12 +37,43 @@ export const NavbarD = () => {
   return (
     <div className='sticky bg-slate-100 shadow-sm from-white dark:bg-[#0000] dark:shadow-gray-400 top-0 flex justify-between items-center h-[10vh] max-w-screen mx-auto px-6 md:px-20'>
       <h1 className='hidden  sm:flex hover:text-#CB7EAD bg-[#CB7EAD] cursor-pointer font-mono w-full font-extrabold text-transparent text-3xl bg-clip-text bg-gradient-to-r from-purple-400 to-blue-600'>
-       <Link to={'/home'}> Wall-et</Link>
+       <Link to={'/'}> Wall-et </Link>
       </h1>
-      <Link to={'/home'}>   <img src={logo} alt='logo' className='md:hidden w-22 h-12 pr-4' /></Link>
+      <img src={logo} alt='logo' className='md:hidden w-22 h-12 pr-4' />
 <div className='hidden max-w-[50%] xl:flex justify-content: space-evenly ;' style={{gap:'5px'}}>
-<Link to='/login'> <button
-    className='p-4 cursor-pointer dark:fill-white text-white font-semibold dark:text-white hover:text-gray-700 dark:hover:fill-gray-400 transition-all duration-75'
+<Link to='/'><button
+    className='p-4 cursor-pointer dark:fill-white text-[#03001C] font-semibold dark:text-white hover:text-[#eeae0d]bg-[#FF6961] hover:text-gray-700 dark:fill-white dark:hover:fill-gray-400 transition-all duration-75'
+    style={{
+      whiteSpace: 'nowrap',
+      borderRadius: '10%',
+      color: '#b5abce',
+      width: '90px',
+      gap:'5px',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis'
+      
+    }}  
+    
+  >
+   Inicio
+    </button></Link>
+    <Link to='/wallet'>
+  <button
+    className='p-4 cursor-pointer dark:fill-white text-[#03001C] font-semibold dark:text-white hover:text-[#eeae0d]bg-[#FF6961] hover:text-gray-700 dark:fill-white dark:hover:fill-gray-400 transition-all duration-75'
+    style={{
+      whiteSpace: 'nowrap',
+      borderRadius: '10%',
+      color: '#8DBF81',
+      width: '130px',
+      gap:'5px',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis'
+    }}
+  >
+Lo que tengo
+    </button></Link>
+    <Link to='/transactions'><button
+    className='p-4 cursor-pointer dark:fill-white text-[#03001C] font-semibold dark:text-white hover:text-[#eeae0d]bg-[#FF6961] hover:text-gray-700 dark:fill-white dark:hover:fill-gray-400 transition-all duration-75'
     style={{
       whiteSpace: 'nowrap',
       borderRadius: '10%',
@@ -52,10 +84,10 @@ export const NavbarD = () => {
         textOverflow: 'ellipsis'
       }}
       >
-      Iniciar sesión
+      Historial
       </button></Link>
-    <button
-      className='p-4 cursor-pointer dark:fill-white text-white font-semibold dark:text-white hover:text-gray-700 dark:hover:fill-gray-400 transition-all duration-75'
+      <Link to='/profile'> <button
+      className='p-4 cursor-pointer font-semibold hover:text-[#eeae0d]bg-[#FF6961] dark:fill-white dark:hover:fill-gray-400 transition-all duration-75'
       style={{
       whiteSpace: 'nowrap',
       borderRadius: '10%',
@@ -66,9 +98,23 @@ export const NavbarD = () => {
         textOverflow: 'ellipsis'
       }}
     >
-    <Link to='/register'>Registrarme</Link>
-    </button>
-  
+Yo
+    </button></Link>
+    <button type='submit'
+    onSubmit={logoutProcess}
+    className='p-4 cursor-pointer dark:fill-white text-[#03001C] font-semibold dark:text-white hover:text-[#eeae0d]bg-[#FF6961] hover:text-gray-700 dark:fill-white dark:hover:fill-gray-400 transition-all duration-75'
+    style={{
+      whiteSpace: 'nowrap',
+      borderRadius: '10%',
+      color: '#FF6961',
+      border: 'solid 1.3px #FF6961',
+      width: '80px',
+      gap:'5px',
+      marginLeft:'10px',
+      overflow: 'clip',
+
+      textOverflow: 'ellipsis'
+     }} >Salir</button>
 
 </div>
 
@@ -99,22 +145,27 @@ export const NavbarD = () => {
     } md:hidden fixed w-screen h-screen top-0 left-0 bg-white dark:bg-[#2A2B2A] bg-opacity-100`}
   >
     <ul className='text-center pt-24 dark:bg-[#2A2B2A] dark:text-white '>
-    
-      <li className='NavBarLinks pb-4 text-2xl font-semibold'>
-        <Link to='/wallet' onClick={handleNav}>
+      <li className='NavBarLinks pb-4 text-2xl font-semibold '>
+        <Link to='/'  onClick={handleNav}>
           Inicio
         </Link>
       </li>
       <li className='NavBarLinks pb-4 text-2xl font-semibold'>
-        <Link to='/login' onClick={handleNav}>
-          Ingresar
+        <Link to='/wallet' onClick={handleNav}>
+          Lo que tengo
         </Link>
       </li>
       <li className='NavBarLinks pb-4 text-2xl font-semibold'>
-        <Link to='/register' onClick={handleNav}>
-          Registrarme
+        <Link to='/transactions' onClick={handleNav}>
+          Historial
         </Link>
       </li>
+      <li className='NavBarLinks pb-4 text-2xl font-semibold'>
+        <Link to='/profile' onClick={handleNav}>
+          Yo
+        </Link>
+      </li>
+      
     </ul>
   </div>
 </div>

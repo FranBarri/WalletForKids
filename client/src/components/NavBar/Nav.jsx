@@ -1,6 +1,5 @@
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import './NavBar.css'
 import { Link } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
@@ -38,7 +37,7 @@ export const Navbar = () => {
   return (
     <div className='sticky bg-slate-100 shadow-sm from-white dark:bg-[#0000] dark:shadow-gray-400 top-0 flex justify-between items-center h-[10vh] max-w-screen mx-auto px-6 md:px-20'>
       <h1 className='hidden  sm:flex hover:text-#CB7EAD bg-[#CB7EAD] cursor-pointer font-mono w-full font-extrabold text-transparent text-3xl bg-clip-text bg-gradient-to-r from-purple-400 to-blue-600'>
-       <Link to={'/home'}> Wall-et</Link>
+       <Link to={'/'}> Wall-et</Link>
       </h1>
       <img src={logo} alt='logo' className='md:hidden w-22 h-12 pr-4' />
 <div className='hidden max-w-[50%] xl:flex justify-content: space-evenly ;' style={{gap:'5px'}}>

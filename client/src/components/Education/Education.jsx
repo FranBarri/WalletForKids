@@ -3,10 +3,10 @@ const ahorro = "https://www.youtube.com/embed/hO7YQP4TIIY"  ;
 const stable = "https://www.youtube.com/embed/uHBk8XUgun4" 
 const respons = "https://www.youtube.com/embed/hMy9OzIndgc" 
 
-function Education() {
+export const Education=()=> {
   return (
     <div className=' space-y-6 py-10'>
-      <h1 className=' flex justify-center font-bold text-3xl '>WALL-ET SCHOOL</h1>
+      <h1 className=' flex justify-center font-bold text-3xl '>WALL-ET Aprende</h1>
         <div className='space-y-4 mx-auto  h-auto py-4'>
           <h3 className=' flex justify-center font-bold '>El ahorro</h3>
           <div className= 'flex justify-center'>
@@ -26,4 +26,3 @@ function Education() {
   )
 }
 
-export default Education

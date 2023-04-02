@@ -1,9 +1,9 @@
  import React from 'react'
  
- function Hero() {
+ const  Hero=()=> {
    return (
     <div className=' '>
-       <h1 className='h-[10vh] text-center pt-10 text-2xl font-bold'> Bienvenido, (nombre)</h1>
+       <h1 className='h-[10vh] text-center pt-10 text-2xl font-bold'> Bienvenido!</h1>
        <div className='flex h-[80vh]  flex-col  justify-between overflow-auto py-20 items-center'>
        <div className=''>
             <button className=' w-56 h-20 bg-red-100 rounded-xl text-2xl border-red-200 border-8 dark:bg-red-500 dark:border-red-400'>
@@ -25,5 +25,4 @@
    )
  }
  
- export default Hero
  

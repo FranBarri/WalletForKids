@@ -1,14 +1,13 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../Auth/AuthAction'
-import { NavbarD } from '../NavBarD/Nav'
-import { Navbar } from './Nav'
+import { SessionNavbarKids } from '../NavBarD/SessionNavBarKids'
+import { NavbarD } from '../NavBarD/NavBarDkids'
 export const NavBarRouter = () => {
-const {user}=useContext(AuthContext)
-
+    const {user}=useContext(AuthContext)
     return (
-        <>{
-            !user ? <NavbarD/> : <Navbar/>
-        }
+        <>
+        {!user?<NavbarD/>: <SessionNavbarKids/>}
+        
         </>
         
   )

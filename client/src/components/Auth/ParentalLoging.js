@@ -1,15 +1,13 @@
 import React, { useContext, useState } from 'react';
-import dino from '../../images/dino.png';
+import dino from '../../images/dino2log.png';
 import { Link, Navigate, redirect, useNavigate } from 'react-router-dom';
 import { loginProcess } from './ApiCall';
 import { AuthContext } from './AuthAction';
 
-export const Login = () => {
+export const ParentalLoging = () => {
   const [password, setPassword] = useState('');
   const [dispatched, setDispatched] = useState(false);
   const [username, setUsername] = useState('');
-  const [sessionMessage, setSessionMessage] = useState('')
-  const [sessionStatus, setSessionStatus] = useState('')
   const {dispatch}=useContext(AuthContext)
   const {user,error}=useContext(AuthContext)
   const navigate=useNavigate()
@@ -30,8 +28,7 @@ export const Login = () => {
           setDispatched(false)
         }, (2000));
         user?setTimeout(() => {
-          window.location.href = '/'
-
+          window.location.href = '/';
         }, 400):<></>
       })
     

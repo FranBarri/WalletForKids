@@ -4,7 +4,7 @@ import Notifications from  '../../images/notifications.png'
 import School from  '../../images/school.png'
 import Qr from  '../../images/qr_code.png'
 import swap from '../../images/swap.png'
-import joystick from '../../images/joystick.svg';
+import joystick from '../../images/joystick.png';
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../Auth/AuthAction'
 export const Wallet=()=> {
@@ -24,24 +24,24 @@ export const Wallet=()=> {
       
       </div>
       <div className='justify-center mx-auto'>
-        <footer className='px-4 items-center dark:bg-slate-700 bg-slate-100 max-w-2xl text-center h-20 space-x-6 sm:space-x-14 sm:px-16 rounded-t-xl flex '>
-            <div className='w-12 h-12  rounded-full bg-green-100 hover:scale-95 dark:bg-green-300 hover:duration-100'>
-              <img src={School} className='dark:invert scale-90 ' style={{cursor:'pointer'}}/>
-            </div>
-            <div className='w-12 h-12 rounded-full bg-blue-100 hover:scale-95 dark:bg-blue-300 hover:duration-100'>
+        <footer className='px-2 items-center dark:bg-slate-700 bg-slate-100 max-w-2xl text-center h-20 space-x-6 sm:space-x-14 sm:px-16 rounded-t-xl flex '>
+            <div className='w-10 h-10  rounded-full bg-green-100 hover:scale-95 dark:bg-green-300 hover:duration-100'>
+            <Link to={'/education'}>  <img src={School} className='dark:invert scale-90 ' style={{cursor:'pointer'}}/>
+            </Link></div>
+            <div className='w-10 h-10 rounded-full bg-blue-100 hover:scale-95 dark:bg-blue-300 hover:duration-100'>
               <img src={Qr} className=' dark:invert scale-90' style={{cursor:'pointer'}}/>
             </div>
-            <div className='w-12 h-12 rounded-full bg-yellow-100 hover:scale-95 dark:bg-yellow-300 hover:duration-100'>
+            <div className='w-10 h-10 rounded-full bg-yellow-100 hover:scale-95 dark:bg-yellow-300 hover:duration-100'>
               <img src={Notifications} className=' dark:invert scale-90' style={{cursor:'pointer'}}/>
             </div>
-            <div className='w-12 h-12 rounded-full bg-red-100 hover:scale-95 dark:bg-red-300 hover:duration-100'>
+            <div className='w-10 h-10 rounded-full bg-red-100 hover:scale-95 dark:bg-red-300 hover:duration-100'>
               <img src={Emrergency} className='dark:invert scale-90' style={{cursor:'pointer'}}/>
             </div>
             
-            <div className='w-12 h-12 rounded-full bg-orange-100 hover:scale-95 dark:bg-orange-300 hover:duration-100'>
+            <div className='w-10 h-10 rounded-full bg-orange-100 hover:scale-95 dark:bg-orange-300 hover:duration-100'>
               <img src={swap} className='dark:invert scale-90' style={{cursor:'pointer'}}/>
             </div>
-            <div className='w-12 h-12 rounded-full bg-orange-100 hover:scale-95 dark:bg-orange-300 hover:duration-100'>
+            <div className='w-10 h-10 rounded-full bg-orange-100 hover:scale-95 dark:bg-orange-300 hover:duration-100'>
              <Link to={'/game'}> <img src={joystick} className='dark:invert scale-90' style={{cursor:'pointer'}}/>
              </Link> </div>
         </footer>

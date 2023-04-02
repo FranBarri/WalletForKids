@@ -59,10 +59,21 @@ router.use(body_parser.json());
       const secret = process.env.PASSWORD_SECRET; //secret key
       const encryptedPassword = CryptoJs.AES.encrypt(req.body.password, secret).toString();
       // Create a new user
-      const newUser = await database.query(
-        'INSERT INTO users (username, email, password, birthdate) VALUES ($1, $2, $3, $4)',[req.body.username.toLowerCase(), req.body.email.toLowerCase(), encryptedPassword, req.body.birthdate]
-      )
-     
+      const verificationCode=await database.query('SELECT authCode FROM users WHERE username = $1', [req.body.username]);
+      if (req.body.verificationCode!==verificationCode.rows[0].authCode){
+        return res.status(401).json({message:'El codigo de verificacion es incorrecto',data:null,status:401});
+      }
+      else{
+
+        const newUser = await database.query(
+          'INSERT INTO users (username, email, password, birthdate,verificationCode) VALUES ($1, $2, $3, $4,$5)',[req.body.username.toLowerCase(), req.body.email.toLowerCase(), encryptedPassword, req.body.birthdate,req.body.verificationCode]
+          )
+          //insert code into parents table
+          const newParent = await database.query(
+            'INSERT INTO parental_users (parental_user_id,authCode) VALUES ($1, $2)',[req.body.parent_id, newUser.rows[0].user_id]
+            )
+           console.log(newParent.rows[0]) 
+          }
         res.status(200).json({ message: 'Usuario creado con exito !',data:newUser.rows,status:200});
       console.log(`User created: ${req.body.username}`);
     } catch (err) {
@@ -78,7 +89,6 @@ router.use(body_parser.json());
       // Find the user with the given email 
       const user = await database.query('SELECT * FROM users WHERE username = $1', [req.body.username]);
     
-
       // Compare the passwords
       const secret = process.env.PASSWORD_SECRET; //secret key
       var bytes  = CryptoJs.AES.decrypt(user.rows[0].password, secret);
@@ -147,7 +157,6 @@ router.use(body_parser.json());
       }
       
       // Encrypt the password before saving the new user
-      let isAdult=true
       const secret = process.env.PASSWORD_SECRET; //secret key
       const encryptedPassword = CryptoJs.AES.encrypt(req.body.password, secret).toString();
       // Create a new user
@@ -164,10 +173,13 @@ const code = Math.floor(Math.random() * 9000) + 1000;
       })
       .then(result => {
         
-          sendEmail(req.body.email,`Bienvenido! verificate ${req.body.username.toUpperCase()}`,result ).
+          sendEmail(req.body.email,`Bienvenido! verificate   ${req.body.username.toUpperCase()}`,result ).
           then((res)=>{console.log(`New email welcome email sent! ${res}`)})
           .catch(err=>console.log(`Email could not be sent: ${err}`))
+          //store the code in the database
         }) 
+        let neParent= database.query('INSERT INTO parental_users (parental_user_id, authCode) VALUES ($1, $2)', [newUser.rows[0].user_id, code])
+        console.log(neParent)
         res.status(200).json({ message: 'Usuario creado con exito !',data:newUser.rows,status:200});
 //         const wallet = await createWallet().then((wallet) => {
 //           return wallet;
@@ -189,7 +201,8 @@ const code = Math.floor(Math.random() * 9000) + 1000;
   
 
     // Compare the passwords
-    const secret = process.env.PASSWORD_SECRET; //secret key
+    let secret = process.env.PASSWORD_SECRET; //secret key
+    console.log(secret)
     var bytes  = CryptoJs.AES.decrypt(user.rows[0].password, secret);
     console.log(user.rows[0].password)
     var decryptedPassword = bytes.toString(CryptoJs.enc.Utf8);
