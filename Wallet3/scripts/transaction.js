@@ -2,14 +2,14 @@ const { ethers } = require('hardhat');
 
 async function main() {
   const [sender] = await ethers.getSigners();
-  const receiverAddress = '0xAEf125B6fF23d1FcE7A9886150caF515f9211839';
+  const receiverAddress = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
 
   // Balance del emisor
   const balanceBefore = await sender.getBalance();
   console.log(`Account balance before: ${ethers.utils.formatEther(balanceBefore)} ETH`);
 
   // Cuanto enviar
-  const amountToSend = ethers.utils.parseEther('1');
+  const amountToSend = ethers.utils.parseEther('100');
 
   // Hacer el objeto de transaccion
   const txObj = {

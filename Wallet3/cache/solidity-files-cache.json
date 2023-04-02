@@ -2,7 +2,7 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Users\\Francisco Barrientos\\.vscode\\Wallet3\\contracts\\MultiSigWallet.sol": {
-      "lastModificationDate": 1680376949242,
+      "lastModificationDate": 1680419565637,
       "contentHash": "a655f2163ce93554a565105a2ec3b16a",
       "sourceName": "contracts/MultiSigWallet.sol",
       "solcConfig": {
@@ -69,6 +69,41 @@
       ],
       "artifacts": [
         "Wallet"
+      ]
+    },
+    "C:\\Users\\Francisco Barrientos\\.vscode\\Wallet3\\contracts\\LimitWallet.sol": {
+      "lastModificationDate": 1680422583602,
+      "contentHash": "552ad118a8bbdb92265ef1797d371d18",
+      "sourceName": "contracts/LimitWallet.sol",
+      "solcConfig": {
+        "version": "0.8.9",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "LimitWallet"
       ]
     }
   }
