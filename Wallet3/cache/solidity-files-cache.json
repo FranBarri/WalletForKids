@@ -1,0 +1,75 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "C:\\Users\\Francisco Barrientos\\.vscode\\Wallet3\\contracts\\MultiSigWallet.sol": {
+      "lastModificationDate": 1680376949242,
+      "contentHash": "a655f2163ce93554a565105a2ec3b16a",
+      "sourceName": "contracts/MultiSigWallet.sol",
+      "solcConfig": {
+        "version": "0.8.9",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.9"
+      ],
+      "artifacts": [
+        "MultiSigWallet"
+      ]
+    },
+    "C:\\Users\\Francisco Barrientos\\.vscode\\Wallet3\\contracts\\Wallet.sol": {
+      "lastModificationDate": 1680376949244,
+      "contentHash": "d0e72624b5e74d4441110cd547e7c8ec",
+      "sourceName": "contracts/Wallet.sol",
+      "solcConfig": {
+        "version": "0.8.9",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.9"
+      ],
+      "artifacts": [
+        "Wallet"
+      ]
+    }
+  }
+}
