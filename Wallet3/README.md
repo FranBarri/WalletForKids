@@ -5,11 +5,6 @@ Este proyecto es un ejemplo simple de cómo se puede usar un contrato inteligent
 - Node.js 14.x o superior
 - Hardhat (instalado globalmente)
 
-## Instalación
-
-1. Clonar este repositorio: `git clone https://github.com/example/kids-allowance.git`
-2. Instalar dependencias: `npm install`
-
 ## Uso
 
 1. Generar una wallet en la red local de Ethereum: `npx hardhat run scripts/Wallet.js --network hardhat`. Esto generará una nueva wallet y su private key, que se almacenará en un archivo en la carpeta `accounts`.
