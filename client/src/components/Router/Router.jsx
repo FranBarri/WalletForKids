@@ -10,6 +10,7 @@ import {ParentalRegister} from '../Auth/ParentalRegister'
 import { Profile } from '../Profile/Profile'
 import { Education } from '../Education/Education'
 import { ParentalLoging } from '../Auth/ParentalLoging'
+import { Hero } from '../Hero/Hero'
 
 export const Router = () => {
   return (
@@ -26,7 +27,7 @@ export const Router = () => {
 <Route path="/profile" element={<Profile/>}/>
 <Route path="/education" element={<Education/>}/>
 <Route path="/login/adultxs" element={<ParentalLoging/>}/>
-
+<Route path='/' element={<Hero/>}/>
 
 {/* adultos  */}
 

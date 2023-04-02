@@ -12,6 +12,7 @@ export const Wallet=()=> {
   const userdata= user.user_data
 
   return (
+    
     <div className='h-[90vh] flex flex-col  justify-between overflow-auto'>
         <div className=' max-w-xl mx-auto py-4'>
         <h1 className=' px-4 max-h-36 pb-6 font-bold text-2xl 'style={{textAlign:'center'}}>Hola {userdata.username   }!    🖐🏻    </h1>
