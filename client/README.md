@@ -28,4 +28,4 @@ This package provides a set of scripts and configuration used by Create React Ap
 This package provides a set of metrics that measure the performance of a web page, such as load time and interactivity, and helps developers optimize their application's user experience.
 
 
-Como correr el proyecto: Mediante la utilización del comando NPM START sobre la carpeta CLIENT se debiera poder ejectutar el client.
+Como correr el proyecto: Mediante la utilización del comando NPM START sobre la carpeta CLIENT se debiera poder ejectutar el client y abrirse en el puerto local 3000.
