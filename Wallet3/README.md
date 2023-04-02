@@ -4,8 +4,11 @@ Este proyecto es un ejemplo simple de cómo se puede usar un contrato inteligent
 
 - Node.js 14.x o superior
 - Hardhat (instalado globalmente)
+Se puede instalar HardHat con el comando `npm install --save-dev hardhat`
 
 ## Uso
+
+Para garantizar su uso correcto, se debe abrir el proyecto en su editor de preferencia y colocar los siguientes comandos en la terminal.
 
 1. Generar una wallet en la red local de Ethereum: `npx hardhat run scripts/Wallet.js --network hardhat`. Esto generará una nueva wallet y su private key, que se almacenará en un archivo en la carpeta `accounts`.
 2. Crear una wallet de ejemplo para un niño: `npx hardhat run test/Wallet.js --network hardhat`. Esto creará una wallet usando la dirección generada en el paso anterior.
