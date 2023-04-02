@@ -1,54 +1,22 @@
-¡Hola!
+Este proyecto es un ejemplo simple de cómo se puede usar un contrato inteligente de Ethereum para limitar los gastos de los niños y requerir la aprobación de los padres para transacciones mayores a cierto límite.
 
-Aquí te dejo el archivo README para tu proyecto:
+## Requerimientos
 
-Proyecto de Wallet MultiFirma
-Este proyecto de Wallet MultiFirma tiene como objetivo crear un sistema para limitar los gastos de los niños y requerir aprobación de los padres en ciertas transacciones.
+- Node.js 14.x o superior
+- Hardhat (instalado globalmente)
 
-Instalación
-Para instalar las dependencias necesarias, puedes usar el siguiente comando:
+## Instalación
 
-Copy code
-npm install
-Uso
-Generar una Wallet
-El primer paso para correr este proyecto es generar una wallet en la red de Ethereum local. Para hacerlo, utiliza el siguiente comando:
+1. Clonar este repositorio: `git clone https://github.com/example/kids-allowance.git`
+2. Instalar dependencias: `npm install`
 
-arduino
-Copy code
-npx hardhat run scripts/Wallet.js --network hardhat
-Este comando generará una wallet y mostrará su dirección. Además, generará un archivo con su clave privada.
+## Uso
 
-Crear una Wallet a partir de la dirección anterior
-Una vez que se ha generado la wallet, se puede crear una wallet a partir de su dirección. Para hacerlo, usa el siguiente comando:
+1. Generar una wallet en la red local de Ethereum: `npx hardhat run scripts/Wallet.js --network hardhat`. Esto generará una nueva wallet y su private key, que se almacenará en un archivo en la carpeta `accounts`.
+2. Crear una wallet de ejemplo para un niño: `npx hardhat run test/Wallet.js --network hardhat`. Esto creará una wallet usando la dirección generada en el paso anterior.
+3. Ejecutar simulaciones de prueba:
+   - Sistema de multi-firma para transacciones de niños: `npx hardhat run test/multiSigTest.js --network hardhat`
+   - Ver balance de una cuenta: `npx hardhat run test/getBalance.js --network hardhat`
+   - Sistema de limitación de gastos de niños: `npx hardhat run test/limitTest.js --network hardhat`
 
-arduino
-Copy code
-npx hardhat run test/Wallet.js --network hardhat
-Este comando creará una wallet a partir de la dirección de la wallet anteriormente creada. Esta wallet será la wallet del niño.
-
-Correr las simulaciones
-Una vez que se han generado las wallets, se pueden correr las simulaciones para limitar los gastos del niño y requerir la aprobación de los padres en ciertas transacciones.
-
-Para correr la simulación del sistema multiSig, utiliza el siguiente comando:
-
-bash
-Copy code
-npx hardhat run test/multiSigTest.js --network hardhat
-Este comando correrá una simulación del sistema multiSig para las transacciones de los niños que requieren aprobación de los padres.
-
-Para mostrar el balance de una cuenta, utiliza el siguiente comando:
-
-bash
-Copy code
-npx hardhat run test/getBalance.js --network hardhat
-Este comando mostrará el balance de una cuenta.
-
-Para correr la simulación del sistema para limitar los gastos del niño, utiliza el siguiente comando:
-
-bash
-Copy code
-npx hardhat run test/limitTest.js --network hardhat
-Este comando correrá una simulación del sistema para limitar los gastos del niño.
-
-Si por alguna razón, hay errores corriendo estos tests, intenta generando otra wallet con el primer comando y vuelva a probar los tests.
+Si encuentra errores al ejecutar las pruebas, intente generando una nueva wallet con el primer comando y vuelva a intentar.
